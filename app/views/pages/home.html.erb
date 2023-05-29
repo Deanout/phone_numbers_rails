@@ -1,0 +1,12 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+<% if user_signed_in? %>
+  <p>Logged in as <strong><%= current_user.email %></strong>.</p>
+  <p>Phone number: <strong><%= current_user.formatted_phone_number %></strong>.</p>
+  <%= link_to "Edit profile", edit_user_registration_path %><br />
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
+<% else %>
+  <p>Not logged in.</p>
+  <%= link_to "Sign up", new_user_registration_path %><br />
+  <%= link_to "Sign in", new_user_session_path %>
+<% end %>
